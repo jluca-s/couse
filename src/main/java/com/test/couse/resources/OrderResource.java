@@ -2,8 +2,8 @@ package com.test.couse.resources;
 
 import java.util.List;
 
-import com.test.couse.entities.User;
-import com.test.couse.services.UserService;
+import com.test.couse.entities.Order;
+import com.test.couse.services.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,21 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResources {
+@RequestMapping(value = "/orders")
+public class OrderResource {
 
     @Autowired
-    private UserService service;
+    private OrderService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-        List<User> list = service.findAll();
+    public ResponseEntity<List<Order>> findAll(){
+        List<Order> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
-        User obj = service.findById(id);
+    public ResponseEntity<Order> findById(@PathVariable Long id) {
+        Order obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
     
